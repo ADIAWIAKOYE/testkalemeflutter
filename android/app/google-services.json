@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "365049351968",
+    "project_id": "rencontre-app-90f6a",
+    "storage_bucket": "rencontre-app-90f6a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:365049351968:android:99b5e7394efc6793b3d145",
+        "android_client_info": {
+          "package_name": "com.example.rencontre"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "365049351968-54f7o6ousrtjqq32ast80t74k2b8hqlf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAafBybXJ1jbjp7I8s1yxDoJ7WrR7HL4MI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "365049351968-54f7o6ousrtjqq32ast80t74k2b8hqlf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
