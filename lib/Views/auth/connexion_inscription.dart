@@ -71,9 +71,19 @@ class _ConnexionInscriptionState extends State<ConnexionInscription> {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
+                 SizedBox(
+                   height: Get.height * 0.01,
+                 ),
+                Padding(
+                  padding: EdgeInsets.only(left: 30,right: 30),
+                  child: Image.asset('assets/onboardIcon.png',
+                width: 150.0),
+                ),
+
                 SizedBox(
                   height: Get.height * 0.03,
                 ),
+
                 isSignUp
                     ? Container(
                   child: myText(
