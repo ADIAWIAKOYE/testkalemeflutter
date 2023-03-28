@@ -182,12 +182,12 @@ class _ConnexionInscriptionState extends State<ConnexionInscription> {
                   text: 'diadie.le10@gmail.com',
                   validator: (String input){
                     if(input.isEmpty){
-                      Get.snackbar('Warning', 'Email is required.',colorText: Colors.white,backgroundColor: Colors.blue);
+                      Get.snackbar('Warning', 'Email is required.',colorText: Colors.white,backgroundColor: Color.fromARGB(255, 243, 163, 33));
                       return '';
                     }
 
                     if(!input.contains('@')){
-                      Get.snackbar('Warning', 'Email is invalid.',colorText: Colors.white,backgroundColor: Colors.blue);
+                      Get.snackbar('Warning', 'Email is invalid.',colorText: Colors.white,backgroundColor: Color.fromARGB(255, 243, 163, 33));
                       return '';
                     }
                   },
@@ -213,34 +213,42 @@ class _ConnexionInscriptionState extends State<ConnexionInscription> {
                   },
                   controller: passwordController
               ),
-              InkWell(
+              GestureDetector(
                 onTap: () {
-                  Get.defaultDialog(
-                      title: 'Forget Password?',
-                      content: Container(
-                        width: Get.width,
-                        child: Column(
-                          children: [
-                            myTextField(
-                                bool: false,
-                                icon: 'assets/lock.png',
-                                text: 'enter your email...',
-                                controller: forgetEmailController
-                            ),
-
-                            SizedBox(
-                              height: 10,
-                            ),
-
-                            MaterialButton(
-                              color: Colors.blue,
-                              onPressed: (){
-                            //    authController.forgetPassword(forgetEmailController.text.trim());
-                              },child: Text("Sent"),minWidth: double.infinity,)
-
-                          ],
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('mot de passe oublié ?'),
+                        content: Container(
+                            width: Get.width ,
+                            height: Get.height * 0.15,
+                          child: Column(
+                            children: [
+                              myTextField(
+                                  bool: false,
+                                  icon: 'assets/lock.png',
+                                  text: 'enter your email...',
+                                  controller: forgetEmailController
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              MaterialButton(
+                                color: Colors.orange,
+                                onPressed: (){
+                                  authController.forgetPassword(forgetEmailController.text.trim());
+                                },
+                                child: Text("Envoiez",style: TextStyle(
+                                  color: Colors.white,
+                                ),),
+                                minWidth: double.infinity,
+                              )
+                            ],
+                          ),
                         ),
-                      )
+                      );
+                    },
                   );
                 },
                 child: Container(
@@ -253,7 +261,8 @@ class _ConnexionInscriptionState extends State<ConnexionInscription> {
                         fontSize: 19,
                         fontWeight: FontWeight.w400,
                         color: AppColors.black,
-                      )),
+                      )
+                  ),
                 ),
               ),
             ],
@@ -271,7 +280,7 @@ class _ConnexionInscriptionState extends State<ConnexionInscription> {
                   return;
                 }
 
-                authController.login(email: emailController.text.trim(),password: passwordController.text.trim());
+                authController.login(context,email: emailController.text.trim(),password: passwordController.text.trim());
 
 
               },
@@ -307,7 +316,7 @@ class _ConnexionInscriptionState extends State<ConnexionInscription> {
                   text: 'assets/google 1 (1).png',
                   onPressed: (){
 
-                  //  authController.signInWithGoogle();
+                    authController.signInWithGoogle();
 
                   }
 
@@ -391,7 +400,7 @@ class _ConnexionInscriptionState extends State<ConnexionInscription> {
                     return;
                   }
 
-                  authController.signUp(email: emailController.text.trim(),password: passwordController.text.trim());
+                  authController.signUp(context,email: emailController.text.trim(),password: passwordController.text.trim());
 
 
 

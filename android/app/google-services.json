@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "365049351968-54f7o6ousrtjqq32ast80t74k2b8hqlf.apps.googleusercontent.com",
+          "client_id": "365049351968-6le2ch45apan1f9nc5fcatappkfvrflq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rencontre",
+            "certificate_hash": "5e6a38b273d084e997f9783bd0708c28ca970e35"
+          }
+        },
+        {
+          "client_id": "365049351968-r79ucmmqm8broav2ame4l51golk6jna6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
