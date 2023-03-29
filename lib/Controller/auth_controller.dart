@@ -69,10 +69,13 @@ class AuthController extends GetxController {
     });
   }
 
-  void forgetPassword(String email) {
+  void forgetPassword(BuildContext context, String email) {
     auth.sendPasswordResetEmail(email: email).then((value) {
-      // Get.back();
-      print('E-mail envoyé avec succès');
+      Navigator.pop(context);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Nous avons envoyé un e-mail de réinitialisation du mot de passe'),
+        duration: Duration(seconds: 10),
+      ));
     }).catchError((e) {
       print("Erreur d'envoi de l'e-mail de réinitialisation du mot de passe est $e");
     });
@@ -105,6 +108,8 @@ class AuthController extends GetxController {
     });
 
   }
+
+  var isProfileInformationLoading = false.obs;
 
 
 }

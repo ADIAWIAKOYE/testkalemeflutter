@@ -237,7 +237,7 @@ class _ConnexionInscriptionState extends State<ConnexionInscription> {
                               MaterialButton(
                                 color: Colors.orange,
                                 onPressed: (){
-                                  authController.forgetPassword(forgetEmailController.text.trim());
+                                  authController.forgetPassword(context,forgetEmailController.text.trim());
                                 },
                                 child: Text("Envoiez",style: TextStyle(
                                   color: Colors.white,
@@ -281,7 +281,6 @@ class _ConnexionInscriptionState extends State<ConnexionInscription> {
                 }
 
                 authController.login(context,email: emailController.text.trim(),password: passwordController.text.trim());
-
 
               },
             ),
@@ -428,6 +427,8 @@ class _ConnexionInscriptionState extends State<ConnexionInscription> {
                 socialAppsIcons(
                     text: 'assets/google 1 (1).png',
                     onPressed: (){
+
+                      authController.signInWithGoogle();
                     }
                 ),
               ],
