@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../Views/Profile/add_profile.dart';
+import '../Views/bottom_nav_bar/bottom_bar_vew.dart';
 import '../Views/home/home_screen.dart';
 import 'package:path/path.dart' as Path;
 
@@ -28,7 +29,7 @@ class AuthController extends GetxController {
 
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => HomeScreen()),
+        MaterialPageRoute(builder: (context) => BottomBarView()),
       );
 
       isLoading(false);
@@ -156,7 +157,7 @@ class AuthController extends GetxController {
 
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => HomeScreen()),
+        MaterialPageRoute(builder: (context) => BottomBarView()),
         (route) => false,
       );
     });
