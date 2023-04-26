@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rencontre/Views/bienvenue_screen.dart';
+import 'package:rencontre/Views/bottom_nav_bar/bottom_bar_vew.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -10,19 +12,20 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
         textTheme: GoogleFonts.latoTextTheme(
-          Theme.of(context).textTheme, // If this is not set, then ThemeData.light().textTheme is used.
+          Theme.of(context)
+              .textTheme, // If this is not set, then ThemeData.light().textTheme is used.
         ),
       ),
       title: 'Flutter Demo',
-      home: BienvenueScreen(),
+      home: FirebaseAuth.instance.currentUser!.uid == null
+          ? BienvenueScreen()
+          : BottomBarView(),
     );
   }
 }
-

@@ -6,7 +6,6 @@ import 'package:rencontre/Utils/app_color.dart';
 import 'package:rencontre/Views/Profile/add_profile.dart';
 import 'package:rencontre/Widgets/my_widgets.dart';
 
-
 class ConnexionInscription extends StatefulWidget {
   const ConnexionInscription({Key? key}) : super(key: key);
 
@@ -15,8 +14,6 @@ class ConnexionInscription extends StatefulWidget {
 }
 
 class _ConnexionInscriptionState extends State<ConnexionInscription> {
-
-
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   TextEditingController emailController = TextEditingController();
@@ -40,7 +37,6 @@ class _ConnexionInscriptionState extends State<ConnexionInscription> {
     // TODO: implement initState
     super.initState();
     authController = Get.put(AuthController());
-
   }
 
   @override
@@ -58,57 +54,54 @@ class _ConnexionInscriptionState extends State<ConnexionInscription> {
                 ),
                 isSignUp
                     ? myText(
-                  text: 'S\'inscrire',
-                  style: TextStyle(
-                    fontSize: 23,
-                    fontWeight: FontWeight.w600,
-                  ),
-                )
+                        text: 'S\'inscrire',
+                        style: TextStyle(
+                          fontSize: 23,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      )
                     : myText(
-                  text: 'Se connecter',
-                  style: GoogleFonts.poppins(
-                    fontSize: 23,
-                    fontWeight: FontWeight.w600,
-                  ),
+                        text: 'Se connecter',
+                        style: GoogleFonts.poppins(
+                          fontSize: 23,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                SizedBox(
+                  height: Get.height * 0.01,
                 ),
-                 SizedBox(
-                   height: Get.height * 0.01,
-                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 30,right: 30),
-                  child: Image.asset('assets/onboardIcon.png',
-                width: 150.0),
+                  padding: EdgeInsets.only(left: 30, right: 30),
+                  child: Image.asset('assets/onboardIcon.png', width: 150.0),
                 ),
-
                 SizedBox(
                   height: Get.height * 0.03,
                 ),
-
                 isSignUp
                     ? Container(
-                  child: myText(
-                    text:
-                    'Bienvenue, veuillez vous inscrire pour voir les événements et les cours de vos amis.',
-                    style: GoogleFonts.roboto(
-                      letterSpacing: 0,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                )
+                        child: myText(
+                          text:
+                              'Bienvenue, veuillez vous inscrire pour voir les événements et les cours de vos amis.',
+                          style: GoogleFonts.roboto(
+                            letterSpacing: 0,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      )
                     : Container(
-                  child: myText(
-                    text:
-                    'Bienvenue à nouveau, veuillez vous connecter et continuer votre voyage avec nous.',
-                    style: GoogleFonts.roboto(
-                      letterSpacing: 0,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
+                        child: myText(
+                          text:
+                              'Bienvenue à nouveau, veuillez vous connecter et continuer votre voyage avec nous.',
+                          style: GoogleFonts.roboto(
+                            letterSpacing: 0,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
                 SizedBox(
                   height: Get.height * 0.03,
                 ),
@@ -168,8 +161,7 @@ class _ConnexionInscriptionState extends State<ConnexionInscription> {
     );
   }
 
-
-  Widget LoginWidget(){
+  Widget LoginWidget() {
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -180,19 +172,36 @@ class _ConnexionInscriptionState extends State<ConnexionInscription> {
                   bool: false,
                   icon: 'assets/mail.png',
                   text: 'diadie.le10@gmail.com',
-                  validator: (String input){
-                    if(input.isEmpty){
-                      Get.snackbar('Warning', 'Email is required.',colorText: Colors.white,backgroundColor: Color.fromARGB(255, 243, 163, 33));
+                  validator: (String input) {
+                    if (input.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'renseigner votre email.',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          backgroundColor: Colors.blue,
+                        ),
+                      );
+                      // Get.snackbar('Warning', 'Email is required.',colorText: Colors.white,backgroundColor: Color.fromARGB(255, 243, 163, 33));
                       return '';
                     }
 
-                    if(!input.contains('@')){
-                      Get.snackbar('Warning', 'Email is invalid.',colorText: Colors.white,backgroundColor: Color.fromARGB(255, 243, 163, 33));
+                    if (!input.contains('@')) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'l\'email n\'est pas valide.',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          backgroundColor: Colors.blue,
+                        ),
+                      );
+                      // Get.snackbar('Warning', 'Email is invalid.',colorText: Colors.white,backgroundColor: Color.fromARGB(255, 243, 163, 33));
                       return '';
                     }
                   },
-                  controller: emailController
-              ),
+                  controller: emailController),
               SizedBox(
                 height: Get.height * 0.02,
               ),
@@ -200,19 +209,36 @@ class _ConnexionInscriptionState extends State<ConnexionInscription> {
                   bool: true,
                   icon: 'assets/lock.png',
                   text: 'mot de passe',
-                  validator: (String input){
-                    if(input.isEmpty){
-                      Get.snackbar('Warning', 'Password is required.',colorText: Colors.white,backgroundColor: Colors.blue);
+                  validator: (String input) {
+                    if (input.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Renseigner le mot de passe.',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          backgroundColor: Colors.blue,
+                        ),
+                      );
+                      // Get.snackbar('Warning', 'Password is required.',colorText: Colors.white,backgroundColor: Colors.blue);
                       return '';
                     }
 
-                    if(input.length <6){
-                      Get.snackbar('Warning', 'Password should be 6+ characters.',colorText: Colors.white,backgroundColor: Colors.blue);
+                    if (input.length < 6) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'le mot de passe doit depasser 6+ carractere.',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          backgroundColor: Colors.blue,
+                        ),
+                      );
+                      // Get.snackbar('Warning', 'Password should be 6+ characters.',colorText: Colors.white,backgroundColor: Colors.blue);
                       return '';
                     }
                   },
-                  controller: passwordController
-              ),
+                  controller: passwordController),
               GestureDetector(
                 onTap: () {
                   showDialog(
@@ -221,27 +247,30 @@ class _ConnexionInscriptionState extends State<ConnexionInscription> {
                       return AlertDialog(
                         title: Text('mot de passe oublié ?'),
                         content: Container(
-                            width: Get.width ,
-                            height: Get.height * 0.15,
+                          width: Get.width,
+                          height: Get.height * 0.15,
                           child: Column(
                             children: [
                               myTextField(
                                   bool: false,
                                   icon: 'assets/lock.png',
                                   text: 'enter your email...',
-                                  controller: forgetEmailController
-                              ),
+                                  controller: forgetEmailController),
                               SizedBox(
                                 height: 20,
                               ),
                               MaterialButton(
                                 color: Colors.orange,
-                                onPressed: (){
-                                  authController.forgetPassword(context,forgetEmailController.text.trim());
+                                onPressed: () {
+                                  authController.forgetPassword(context,
+                                      forgetEmailController.text.trim());
                                 },
-                                child: Text("Envoiez",style: TextStyle(
-                                  color: Colors.white,
-                                ),),
+                                child: Text(
+                                  "Envoiez",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
                                 minWidth: double.infinity,
                               )
                             ],
@@ -261,30 +290,32 @@ class _ConnexionInscriptionState extends State<ConnexionInscription> {
                         fontSize: 19,
                         fontWeight: FontWeight.w400,
                         color: AppColors.black,
-                      )
-                  ),
+                      )),
                 ),
               ),
             ],
           ),
-          Obx(()=> authController.isLoading.value? Center(child: CircularProgressIndicator(),) :Container(
-            height: 50,
-            margin: EdgeInsets.symmetric(
-                vertical: Get.height * 0.04),
-            width: Get.width,
-            child: elevatedButton(
-              text: 'Se connecter',
-              onpress: () {
+          Obx(() => authController.isLoading.value
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Container(
+                  height: 50,
+                  margin: EdgeInsets.symmetric(vertical: Get.height * 0.04),
+                  width: Get.width,
+                  child: elevatedButton(
+                    text: 'Se connecter',
+                    onpress: () {
+                      if (!formKey.currentState!.validate()) {
+                        return;
+                      }
 
-                if(!formKey.currentState!.validate()){
-                  return;
-                }
-
-                authController.login(context,email: emailController.text.trim(),password: passwordController.text.trim());
-
-              },
-            ),
-          )),
+                      authController.login(context,
+                          email: emailController.text.trim(),
+                          password: passwordController.text.trim());
+                    },
+                  ),
+                )),
           SizedBox(
             height: Get.height * 0.02,
           ),
@@ -304,22 +335,14 @@ class _ConnexionInscriptionState extends State<ConnexionInscription> {
             children: [
               socialAppsIcons(
                   text: 'assets/fb.png',
-                  onPressed: (){
-
-                    Get.to(()=> ProfileScreen());
-
-                  }
-              ),
-
+                  onPressed: () {
+                    Get.to(() => ProfileScreen());
+                  }),
               socialAppsIcons(
                   text: 'assets/google 1 (1).png',
-                  onPressed: (){
-
+                  onPressed: () {
                     authController.signInWithGoogle();
-
-                  }
-
-              ),
+                  }),
             ],
           )
         ],
@@ -327,139 +350,168 @@ class _ConnexionInscriptionState extends State<ConnexionInscription> {
     );
   }
 
-  Widget SignUpWidget(){
+  Widget SignUpWidget() {
     return SingleChildScrollView(
         child: Column(
+      children: [
+        myTextField(
+            bool: false,
+            icon: 'assets/mail.png',
+            text: 'Email',
+            validator: (String input) {
+              if (input.isEmpty) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      'Email obligatoire.',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    backgroundColor: Colors.blue,
+                  ),
+                );
+                // Get.snackbar('Warning', 'Email obligatoire.',colorText: Colors.white,backgroundColor: Colors.blue);
+                return '';
+              }
+
+              if (!input.contains('@')) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      'cet Email n\'est pas valide.',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    backgroundColor: Colors.blue,
+                  ),
+                );
+                //Get.snackbar('Warning', 'cet Email n\'est pas valide.',colorText: Colors.white,backgroundColor: Colors.blue);
+                return '';
+              }
+            },
+            controller: emailController),
+        SizedBox(
+          height: Get.height * 0.02,
+        ),
+        myTextField(
+            bool: true,
+            icon: 'assets/lock.png',
+            text: 'password',
+            validator: (String input) {
+              if (input.isEmpty) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      'Le mot de passe oblicatoire.',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    backgroundColor: Colors.blue,
+                  ),
+                );
+                // Get.snackbar('Warning', 'mot de passe oblicatoire.',colorText: Colors.white,backgroundColor: Colors.blue);
+                return '';
+              }
+
+              if (input.length < 6) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      'Le mot de passe doit comporter au moins 6 caractères.',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    backgroundColor: Colors.blue,
+                  ),
+                );
+                // Get.snackbar('Warning', 'Le mot de passe doit comporter au moins 6 caractères.',colorText: Colors.white,backgroundColor: Colors.blue);
+                return '';
+              }
+            },
+            controller: passwordController),
+        SizedBox(
+          height: Get.height * 0.02,
+        ),
+        myTextField(
+            bool: false,
+            icon: 'assets/lock.png',
+            text: 'Ressaisir le mot de passe',
+            validator: (input) {
+              if (input != passwordController.text.trim()) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      'Le mot de passe de confirmation n\'est pas le même que le mot de passe.',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    backgroundColor: Colors.blue,
+                  ),
+                );
+                //  Get.snackbar('Warning', 'Le mot de passe de confirmation n\'est pas le même que le mot de passe.',colorText: Colors.white,backgroundColor: Colors.blue);
+                return '';
+              }
+            },
+            controller: confirmPasswordController),
+        Obx(() => authController.isLoading.value
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : Container(
+                height: 50,
+                margin: EdgeInsets.symmetric(
+                  vertical: Get.height * 0.04,
+                ),
+                width: Get.width,
+                child: elevatedButton(
+                  text: 'S\'inscrire',
+                  onpress: () {
+                    if (!formKey.currentState!.validate()) {
+                      return;
+                    }
+
+                    authController.signUp(context,
+                        email: emailController.text.trim(),
+                        password: passwordController.text.trim());
+                  },
+                ),
+              )),
+        myText(
+          text: 'Ou connectez-vous avec',
+          style: TextStyle(
+            fontSize: Get.height * 0.025,
+          ),
+        ),
+        SizedBox(
+          height: Get.height * 0.01,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
-
-            myTextField(
-                bool: false,
-                icon: 'assets/mail.png',
-                text: 'Email',
-                validator: (String input){
-                  if(input.isEmpty){
-                    Get.snackbar('Warning', 'Email obligatoire.',colorText: Colors.white,backgroundColor: Colors.blue);
-                    return '';
-                  }
-
-                  if(!input.contains('@')){
-                    Get.snackbar('Warning', 'cet Email n\'est pas valide.',colorText: Colors.white,backgroundColor: Colors.blue);
-                    return '';
-                  }
-                },
-                controller: emailController
-            ),
-            SizedBox(
-              height: Get.height * 0.02,
-            ),
-            myTextField(
-                bool: true,
-                icon: 'assets/lock.png',
-                text: 'password',
-                validator: (String input){
-                  if(input.isEmpty){
-                    Get.snackbar('Warning', 'mot de passe oblicatoire.',colorText: Colors.white,backgroundColor: Colors.blue);
-                    return '';
-                  }
-
-                  if(input.length <6){
-                    Get.snackbar('Warning', 'Le mot de passe doit comporter au moins 6 caractères.',colorText: Colors.white,backgroundColor: Colors.blue);
-                    return '';
-                  }
-                },
-                controller: passwordController
-            ),
-            SizedBox(
-              height: Get.height * 0.02,
-            ),
-            myTextField(
-                bool: false,
-                icon: 'assets/lock.png',
-                text: 'Ressaisir le mot de passe',
-                validator: (input){
-                  if(input != passwordController.text.trim()){
-                    Get.snackbar('Warning', 'Le mot de passe de confirmation n\'est pas le même que le mot de passe.',colorText: Colors.white,backgroundColor: Colors.blue);
-                    return '';
-                  }
-                },
-                controller: confirmPasswordController
-            ),
-            Obx(()=> authController.isLoading.value? Center(child: CircularProgressIndicator(),) : Container(
-              height: 50,
-              margin: EdgeInsets.symmetric(
-                vertical: Get.height * 0.04,
-              ),
-              width: Get.width,
-              child: elevatedButton(
-                text: 'S\'inscrire',
-                onpress: () {
-
-                  if(!formKey.currentState!.validate()){
-                    return;
-                  }
-
-                  authController.signUp(context,email: emailController.text.trim(),password: passwordController.text.trim());
-
-
-
-                },
-              ),
-            )),
-            myText(
-              text: 'Ou connectez-vous avec',
-              style: TextStyle(
-                fontSize: Get.height * 0.025,
-              ),
-            ),
-            SizedBox(
-              height: Get.height * 0.01,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                socialAppsIcons(
-                    text: 'assets/fb.png',
-                    onPressed: (){
-                    }
-                ),
-
-                socialAppsIcons(
-                    text: 'assets/google 1 (1).png',
-                    onPressed: (){
-
-                      authController.signInWithGoogle();
-                    }
-                ),
-              ],
-            ),
-            SizedBox(
-              height: Get.height * 0.02,
-            ),
-            Container(
-                width: Get.width * 0.9,
-                child: RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(children: [
-                    TextSpan(
-                        text:
-                        'En vous inscrivant, vous acceptez notre ',
-                        style: TextStyle(
-                            color: Color(0xff262628),
-                            fontSize: 13)),
-                    TextSpan(
-                        text:
-                        'termes, politique de données et politique de cookies',
-                        style: TextStyle(
-                            color: Color(0xff262628),
-                            fontSize: 13,
-                            fontWeight: FontWeight.bold)),
-                  ]),
-                )),
+            socialAppsIcons(text: 'assets/fb.png', onPressed: () {}),
+            socialAppsIcons(
+                text: 'assets/google 1 (1).png',
+                onPressed: () {
+                  authController.signInWithGoogle();
+                }),
           ],
-        )
-
-    );
+        ),
+        SizedBox(
+          height: Get.height * 0.02,
+        ),
+        Container(
+            width: Get.width * 0.9,
+            child: RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(children: [
+                TextSpan(
+                    text: 'En vous inscrivant, vous acceptez notre ',
+                    style: TextStyle(color: Color(0xff262628), fontSize: 13)),
+                TextSpan(
+                    text:
+                        'termes, politique de données et politique de cookies',
+                    style: TextStyle(
+                        color: Color(0xff262628),
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold)),
+              ]),
+            )),
+      ],
+    ));
   }
-
 }

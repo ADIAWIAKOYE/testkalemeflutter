@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rencontre/Controller/data_controller.dart';
 
 import '../Profile/profile.dart';
 import '../community/community.dart';
@@ -35,7 +36,7 @@ class _BottomBarViewState extends State<BottomBarView> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    //   Get.put(DataController(),permanent: true);
+    Get.put(DataController(), permanent: true);
     //       FirebaseMessaging.instance.getInitialMessage();
     //   FirebaseMessaging.onMessage.listen((message) {
 
@@ -63,8 +64,8 @@ class _BottomBarViewState extends State<BottomBarView> {
                       currentIndex == 0
                           ? 'assets/Group 43 (1).png'
                           : 'assets/Group 43.png',
-                      width: 22,
-                      height: 22,
+                      width: 30,
+                      height: 30,
                     ),
                   ),
                   label: ''),
@@ -75,8 +76,8 @@ class _BottomBarViewState extends State<BottomBarView> {
                       currentIndex == 1
                           ? 'assets/Group 18340 (1).png'
                           : 'assets/Group 18340.png',
-                      width: 22,
-                      height: 22,
+                      width: 30,
+                      height: 30,
                     ),
                   ),
                   label: ''),
@@ -87,8 +88,8 @@ class _BottomBarViewState extends State<BottomBarView> {
                         currentIndex == 2
                             ? 'assets/Group 18528 (1).png'
                             : 'assets/Group 18528.png',
-                        width: 22,
-                        height: 22),
+                        width: 30,
+                        height: 30),
                   ),
                   label: ''),
               BottomNavigationBarItem(
@@ -98,8 +99,8 @@ class _BottomBarViewState extends State<BottomBarView> {
                         currentIndex == 3
                             ? 'assets/Group 18339 (1).png'
                             : 'assets/Group 18339.png',
-                        width: 22,
-                        height: 22),
+                        width: 30,
+                        height: 30),
                   ),
                   label: ''),
               BottomNavigationBarItem(
@@ -109,8 +110,8 @@ class _BottomBarViewState extends State<BottomBarView> {
                       currentIndex == 4
                           ? 'assets/Group 18341 (1).png'
                           : 'assets/Group 18341.png',
-                      width: 22,
-                      height: 22,
+                      width: 30,
+                      height: 30,
                     ),
                   ),
                   label: ''),
